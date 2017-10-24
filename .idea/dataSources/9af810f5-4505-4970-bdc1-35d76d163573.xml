@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="portfolio@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="portfolio">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="admin_exercice"/>
+    <schema id="4" parent="1" name="admin_exo_correction"/>
+    <schema id="5" parent="1" name="cours_forum"/>
+    <schema id="6" parent="1" name="cystopia"/>
+    <schema id="7" parent="1" name="exo_nains"/>
+    <schema id="8" parent="1" name="information_schema"/>
+    <schema id="9" parent="1" name="mysql"/>
+    <schema id="10" parent="1" name="performance_schema"/>
+    <schema id="11" parent="1" name="phpmyadmin"/>
+    <schema id="12" parent="1" name="poo"/>
+    <schema id="13" parent="1" name="streetfighter"/>
+    <schema id="14" parent="1" name="test"/>
+    <table id="15" parent="2" name="authorization"/>
+    <table id="16" parent="2" name="content"/>
+    <table id="17" parent="2" name="images"/>
+    <table id="18" parent="2" name="rank"/>
+    <table id="19" parent="2" name="rank_authorization"/>
+    <table id="20" parent="2" name="user"/>
+    <column id="21" parent="15" name="c_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="22" parent="15" name="c_description">
+      <Position>2</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="23" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>c_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="24" parent="16" name="c_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="25" parent="16" name="c_type">
+      <Position>2</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="16" name="c_title">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="16" name="c_content">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="16" name="c_link">
+      <Position>5</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="16" name="c_user_fk">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="30" parent="16" name="c_images_fk">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="31" parent="16" name="contenus_c_images_fk_index">
+      <ColNames>c_images_fk</ColNames>
+    </index>
+    <index id="32" parent="16" name="c_user_fk">
+      <ColNames>c_user_fk</ColNames>
+    </index>
+    <key id="33" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>c_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="34" parent="16" name="content_ibfk_1">
+      <ColNames>c_user_fk</ColNames>
+      <RefSchemaName>portfolio</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>u_id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>set-null</OnDelete>
+    </foreign-key>
+    <foreign-key id="35" parent="16" name="c_images_fk">
+      <ColNames>c_images_fk</ColNames>
+      <RefSchemaName>portfolio</RefSchemaName>
+      <RefTableName>images</RefTableName>
+      <RefColNames>i_id</RefColNames>
+    </foreign-key>
+    <column id="36" parent="17" name="i_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="37" parent="17" name="i_link">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="38" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>i_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="39" parent="18" name="r_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="40" parent="18" name="r_autorisation">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="41" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>r_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="42" parent="18" name="rank_ibfk_1">
+      <ColNames>r_id</ColNames>
+      <RefSchemaName>portfolio</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>u_rank_fk</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="43" parent="19" name="r_rang_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="44" parent="19" name="r_autorisation_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="45" parent="19" name="r_autorisation_id">
+      <ColNames>r_autorisation_id</ColNames>
+    </index>
+    <key id="46" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>r_rang_id
+r_autorisation_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="47" parent="19" name="rank_authorization_ibfk_3">
+      <ColNames>r_rang_id</ColNames>
+      <RefSchemaName>portfolio</RefSchemaName>
+      <RefTableName>rank</RefTableName>
+      <RefColNames>r_id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <foreign-key id="48" parent="19" name="rank_authorization_ibfk_2">
+      <ColNames>r_autorisation_id</ColNames>
+      <RefSchemaName>portfolio</RefSchemaName>
+      <RefTableName>authorization</RefTableName>
+      <RefColNames>c_id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="49" parent="20" name="u_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="50" parent="20" name="u_login">
+      <Position>2</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="20" name="u_lastname">
+      <Position>3</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="52" parent="20" name="u_firstname">
+      <Position>4</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="20" name="u_pwd">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="20" name="u_mail">
+      <Position>6</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="20" name="u_newsletter">
+      <Position>7</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="56" parent="20" name="u_rank_fk">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="57" parent="20" name="u_rang_fk">
+      <ColNames>u_rank_fk</ColNames>
+    </index>
+    <key id="58" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>u_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
